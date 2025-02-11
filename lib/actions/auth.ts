@@ -11,7 +11,7 @@ import { redirect } from "next/navigation";
 import { workflowClient } from "../workflow";
 import config from "../config";
 
-export const signInWithCredentials = async (params: Pick<AuthCredentails, 'email' | 'password'>) => {
+export const signInWithCredentials = async (params: Pick<AuthCredentials, 'email' | 'password'>) => {
     const { email, password } = params;
 
     const ip = (await headers()).get('x-forwarded-for') || '127.0.0.1';
@@ -37,7 +37,7 @@ export const signInWithCredentials = async (params: Pick<AuthCredentails, 'email
     }
 }   
 
-export const signUp = async (params: AuthCredentails) => {
+export const signUp = async (params: AuthCredentials) => {
     const { fullName, email, universityId, password, universityCard } = params;
 
     const ip = (await headers()).get('x-forwarded-for') || '127.0.0.1';

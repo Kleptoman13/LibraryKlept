@@ -16,7 +16,7 @@ export const sendEmail  = async ({ email, subject, message }: { email: string; s
         provider: resend({ token: config.env.resendToken }),
       },
       body: {
-        from: "Kleptosh <hello.kleptoshproj.pro>",
+        from: "Kleptosh <contact@kleptoshproj.pro>",
         to: [email],
         subject,
         html: message

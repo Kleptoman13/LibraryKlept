@@ -63,14 +63,14 @@ export const signUp = async (params: AuthCredentails) => {
         })
 
         await workflowClient.trigger({
-            url: `${config.env.prodApiEndpoint}/api/workflow/onboarding`,
+            url: `${config.env.prodApiEndpoint}/api/workflows/onboarding`,
             body: {
                 email,
                 fullName,
             }
         })
 
-        return { success: true, error: 'SignUp error' }
+        return { success: true }
     } catch (error) {
         console.log(error, 'SignUp error');
         return { success: false, error: 'SignUp error' };

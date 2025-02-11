@@ -7,5 +7,21 @@ const { env: { imagekit: { publicKey, privateKey, urlEndpoint } } } = config
 const imagekit = new ImageKit({ publicKey, privateKey, urlEndpoint });
 
 export async function GET() {
-    return NextResponse.json(imagekit.getAuthenticationParameters());
+    const response = NextResponse.json(imagekit.getAuthenticationParameters());
+
+    response.headers.set("Access-Control-Allow-Origin", "https://library-klept.vercel.app");
+    response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+    return response
+}
+
+export async function OPTIONS() {
+    const response = new NextResponse(null, { status: 204 });
+
+    response.headers.set("Access-Control-Allow-Origin", "https://library-klept.vercel.app");
+    response.headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
+    response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+    return response;
 }
